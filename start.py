@@ -27,7 +27,6 @@ for key in settings.keys():
     if isinstance(settings[key], dict):
       # We can go two levels deep. Mostly so we can set the servers visablility.
       for subkey in settings[key].keys():
-        print os.getenv('FACTORIO_' + key.upper() + '_' + subkey.upper())
         settings[key][subkey] = type(settings[key][subkey])(os.getenv('FACTORIO_' + key.upper() + "_" + subkey.upper(), settings[key][subkey]))
     else:
       # Ensure we retain our casting
